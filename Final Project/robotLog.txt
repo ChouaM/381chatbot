@@ -1,0 +1,15 @@
+==============================================================================
+Robotskill                                                                    
+==============================================================================
+Connect                                                               | PASS |
+------------------------------------------------------------------------------
+Is BGP running properly?                                              | FAIL |
+SchemaMissingKeyError: Missing keys: [['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'up_down'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'tbl_ver'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'as'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'input_queue'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'state_pfxrcd'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'output_queue'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'msg_sent'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'msg_rcvd'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'version']]
+------------------------------------------------------------------------------
+Robotskill                                                            | FAIL |
+2 critical tests, 1 passed, 1 failed
+2 tests total, 1 passed, 1 failed
+==============================================================================
+Output:  /home/devasc/labs/devnet-src/sample-app/Network_Monitor/Final Project/output.xml
+Log:     /home/devasc/labs/devnet-src/sample-app/Network_Monitor/Final Project/log.html
+Report:  /home/devasc/labs/devnet-src/sample-app/Network_Monitor/Final Project/report.html

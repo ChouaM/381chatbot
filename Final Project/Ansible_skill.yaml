@@ -1,0 +1,20 @@
+---
+- name: Running show commands on Cisco IOS #Name of a play
+  hosts: routers
+  gather_facts: false
+  connection: network_cli #provides SSH connection
+
+  tasks:
+    - name: Run multiple commands on Cisco IOS nodes #first task
+      ios_command:
+        commands:
+          - show version
+
+      register: my_config
+
+    - name: Save output to file on disk #second task
+      copy: #module copy
+          content: "{{ my_config.stdout[0] }}" #content = read my_config via standard_out
+          dest: "{{inventory_hostname}}.txt"
+  
+...

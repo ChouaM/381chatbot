@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2.1 (Python 3.8.2 on linux)" generated="20211208 01:58:54.447" rpa="false">
+<suite id="s1" name="Robotskill" source="/home/devasc/labs/devnet-src/sample-app/Network_Monitor/Final Project/robotskill.robot">
+<test id="s1-t1" name="Connect">
+<kw name="use genie testbed &quot;${tbr}&quot;" library="genie.libs.robot.GenieRobot">
+<doc>Create the genie testbed</doc>
+<status status="PASS" starttime="20211208 01:58:54.630" endtime="20211208 01:58:54.664"></status>
+</kw>
+<kw name="connect to devices &quot;R1&quot;" library="pyats.robot.pyATSRobot">
+<doc>Connect to devices via connection as defined in testbed.yaml.
+Specify devices with semi-colon separated list, e.g. "R1;R2"</doc>
+<msg timestamp="20211208 01:58:55.499" level="INFO">[2021-12-08 01:58:54,667] +++ R1 logfile /tmp/R1-cli-20211208T015854666.log +++
+[2021-12-08 01:58:54,667] +++ Unicon plugin iosxe +++
+Password: 
+[2021-12-08 01:58:54,825] +++ connection to spawn: ssh -l cisco 192.168.56.101, id: 139740925520528 +++
+[2021-12-08 01:58:54,826] connection to R1
+
+C
+*                                           *
+**                                         **
+***                                       ***
+***  Cisco Networking Academy             ***
+***                                       ***
+***  This software is provided for        ***
+***   Educational Purposes                ***
+***    Only in Networking Academies       ***
+***                                       ***
+**                                         **
+*                                           *
+
+
+
+CSR1#
+[2021-12-08 01:58:54,891] +++ initializing handle +++
+[2021-12-08 01:58:54,892] +++ R1: executing command 'term length 0' +++
+term length 0
+CSR1#
+[2021-12-08 01:58:55,041] +++ R1: executing command 'term width 0' +++
+term width 0
+CSR1#
+[2021-12-08 01:58:55,193] +++ R1: executing command 'show version' +++
+show version
+Cisco IOS XE Software, Version 16.12.03
+Cisco IOS Software [Gibraltar], Virtual XE Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 16.12.3, RELEASE SOFTWARE (fc5)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2020 by Cisco Systems, Inc.
+Compiled Mon 09-Mar-20 21:50 by mcpre
+
+
+Cisco IOS-XE software, Copyright (c) 2005-2020 by cisco Systems, Inc.
+All rights reserved.  Certain components of Cisco IOS-XE software are
+licensed under the GNU General Public License ("GPL") Version 2.0.  The
+software code licensed under GPL Version 2.0 is free software that comes
+with ABSOLUTELY NO WARRANTY.  You can redistribute and/or modify such
+GPL code under the terms of GPL Version 2.0.  For more details, see the
+documentation or "License Notice" file accompanying the IOS-XE software,
+or the applicable URL provided on the flyer accompanying the IOS-XE
+software.
+
+
+ROM: IOS-XE ROMMON
+
+CSR1 uptime is 7 minutes
+Uptime for this control processor is 10 minutes
+System returned to ROM by reload
+System image file is "bootflash:packages.conf"
+Last reload reason: reload
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+License Level: ax
+License Type: N/A(Smart License Enabled)
+Next reload license Level: ax
+
+
+Smart Licensing Status: UNREGISTERED/No Licenses in Use
+
+cisco CSR1000V (VXE) processor (revision VXE) with 2080230K/3075K bytes of memory.
+Processor board ID 9BU1GPJYRUE
+3 Gigabit Ethernet interfaces
+32768K bytes of non-volatile configuration memory.
+3978400K bytes of physical memory.
+6188032K bytes of virtual hard disk at bootflash:.
+0K bytes of WebUI ODM Files at webui:.
+
+Configuration register is 0x2102
+
+CSR1#
+[2021-12-08 01:58:55,356] +++ R1: config +++
+config term
+Enter configuration commands, one per line.  End with CNTL/Z.
+CSR1(config)#no logging console
+CSR1(config)#line console 0
+CSR1(config-line)#exec-timeout 0
+CSR1(config-line)#end
+CSR1#</msg>
+<status status="PASS" starttime="20211208 01:58:54.665" endtime="20211208 01:58:55.500"></status>
+</kw>
+<status status="PASS" starttime="20211208 01:58:54.629" endtime="20211208 01:58:55.500" critical="yes"></status>
+</test>
+<test id="s1-t2" name="Is BGP running properly?">
+<kw name="Profile the system for &quot;bgp&quot; on devices &quot;R1&quot; as &quot;./profiletest&quot;" library="genie.libs.robot.GenieRobot">
+<doc>Profile system as per the provided features on the devices</doc>
+<msg timestamp="20211208 01:58:57.776" level="INFO">[2021-12-08 01:58:57,559] +++ R1: executing command 'show bgp all summary' +++
+show bgp all summary
+For address family: IPv4 Unicast
+BGP router identifier 11.1.1.1, local AS number 65001
+BGP table version is 5, main routing table version 5
+4 network entries using 992 bytes of memory
+4 path entries using 544 bytes of memory
+2/2 BGP path/bestpath attribute entries using 576 bytes of memory
+1 BGP AS-PATH entries using 24 bytes of memory
+0 BGP route-map cache entries using 0 bytes of memory
+0 BGP filter-list cache entries using 0 bytes of memory
+BGP using 2136 total bytes of memory
+BGP activity 4/0 prefixes, 4/0 paths, scan interval 60 secs
+4 networks peaked at 01:53:35 Dec 8 2021 UTC (00:05:32.446 ago)
+
+Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+192.168.148.102 4        65002       0       0        1    0    0 never    Idle
+192.168.157.102 4        65002      11      11        5    0    0 00:06:42        2
+CSR1#</msg>
+<msg timestamp="20211208 01:58:57.784" level="FAIL">SchemaMissingKeyError: Missing keys: [['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'up_down'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'tbl_ver'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'as'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'input_queue'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'state_pfxrcd'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'output_queue'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'msg_sent'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'msg_rcvd'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'version']]</msg>
+<status status="FAIL" starttime="20211208 01:58:55.503" endtime="20211208 01:58:57.784"></status>
+</kw>
+<status status="FAIL" starttime="20211208 01:58:55.502" endtime="20211208 01:58:57.785" critical="yes">SchemaMissingKeyError: Missing keys: [['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'up_down'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'tbl_ver'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'as'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'input_queue'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'state_pfxrcd'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'output_queue'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'msg_sent'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'msg_rcvd'], ['vrf', 'default', 'neighbor', 'CS', 'address_family', 'ipv4 unicast', 'version']]</status>
+</test>
+<status status="FAIL" starttime="20211208 01:58:54.450" endtime="20211208 01:58:57.786"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="1">Critical Tests</stat>
+<stat pass="1" fail="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="1" id="s1" name="Robotskill">Robotskill</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
